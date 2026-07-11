@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>웬디, 어른이 되렴 | 머더 미스터리 사건기록</title>
+    <meta
+      name="description"
+      content="머더 미스터리 웬디, 어른이 되렴 참가자 배부용 랜딩 페이지"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #05090b;
+        --bg-2: #081014;
+        --panel: #0d1519;
+        --panel-2: #101b20;
+        --ink: #eef9fb;
+        --muted: #9ab0b7;
+        --faint: #5f737b;
+        --cyan: #7de8f4;
+        --green: #4de879;
+        --red: #ff3c48;
+        --line: rgba(238, 249, 251, 0.18);
+        --line-strong: rgba(125, 232, 244, 0.46);
+        --serif: "Nanum Myeongjo", "AppleMyungjo", "Batang", "바탕", serif;
+        --mono: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          radial-gradient(circle at 17% 6%, rgba(125, 232, 244, 0.16), transparent 24rem),
+          radial-gradient(circle at 87% 18%, rgba(255, 60, 72, 0.15), transparent 21rem),
+          linear-gradient(180deg, #020405 0%, var(--bg) 42rem, #030506 100%);
+        color: var(--ink);
+        font-family: var(--serif);
+        line-height: 1.78;
+        overflow-x: hidden;
+        word-break: keep-all;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        background-image:
+          linear-gradient(rgba(125, 232, 244, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(125, 232, 244, 0.04) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: linear-gradient(180deg, #000, transparent 78%);
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .wrap,
+      .hero-inner,
+      main > section:not(.story-section) {
+        width: min(1160px, calc(100% - 40px));
+        margin-inline: auto;
+      }
+
+      .hero {
+        min-height: 100svh;
+        display: grid;
+        align-items: end;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          linear-gradient(90deg, rgba(2, 4, 5, 0.95) 0%, rgba(2, 4, 5, 0.64) 42%, rgba(2, 4, 5, 0.18) 100%),
+          linear-gradient(180deg, rgba(2, 4, 5, 0.22) 0%, rgba(2, 4, 5, 0.94) 100%),
+          url("assets/09-monitor-wendy.png") center / cover no-repeat;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background:
+          repeating-linear-gradient(180deg, rgba(125, 232, 244, 0.09) 0 1px, transparent 1px 6px),
+          linear-gradient(90deg, rgba(255, 60, 72, 0.12), transparent 20%, transparent 72%, rgba(77, 232, 121, 0.12));
+        opacity: 0.38;
+      }
+
+      .hero-inner {
+        padding: 96px 0 58px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        color: var(--cyan);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        display: block;
+        width: 44px;
+        height: 1px;
+        background: var(--cyan);
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin-bottom: 20px;
+        font-size: clamp(3.3rem, 10vw, 8.4rem);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: 0;
+        text-shadow: 0 22px 42px rgba(0, 0, 0, 0.78), 0 0 34px rgba(125, 232, 244, 0.18);
+      }
+
+      .subtitle {
+        max-width: 760px;
+        margin-bottom: 34px;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .hero-meta li {
+        border: 1px solid var(--line);
+        background: rgba(5, 9, 11, 0.62);
+        padding: 9px 13px;
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 0.82rem;
+      }
+
+      main {
+        padding: 70px 0 96px;
+      }
+
+      section {
+        padding: 54px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
+        gap: 34px;
+        align-items: end;
+        margin-bottom: 30px;
+      }
+
+      .label {
+        color: var(--faint);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: clamp(1.8rem, 4vw, 3.35rem);
+        font-weight: 400;
+        line-height: 1.18;
+      }
+
+      .invitation {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .invite-copy,
+      .story-copy,
+      .suspect {
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(125, 232, 244, 0.06), transparent 112px),
+          rgba(13, 21, 25, 0.88);
+      }
+
+      .invite-copy {
+        display: grid;
+        align-content: center;
+        padding: clamp(22px, 4vw, 42px);
+        min-height: 360px;
+      }
+
+      .invite-copy blockquote {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(1.35rem, 2.8vw, 2.15rem);
+        line-height: 1.6;
+      }
+
+      .invite-image,
+      .story-image {
+        position: relative;
+        overflow: hidden;
+        min-height: 260px;
+        border: 1px solid var(--line);
+        background: #000;
+      }
+
+      .invite-image img {
+        height: 100%;
+        min-height: inherit;
+        object-fit: contain;
+      }
+
+      .story-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .story-section {
+        width: 100%;
+        max-width: 100%;
+        padding-top: 0;
+      }
+
+      .story-section .section-head {
+        width: min(1160px, calc(100% - 40px));
+        margin-inline: auto;
+      }
+
+      .story-card {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto auto;
+        width: 100%;
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+        background: #020405;
+      }
+
+      .story-card:nth-child(even) .story-image {
+        order: 0;
+      }
+
+      .story-image {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        min-height: clamp(430px, 56vw, 720px);
+        border: 0;
+      }
+
+      .story-image::before {
+        position: absolute;
+        inset: -24px;
+        content: "";
+        background: var(--story-art) center / cover no-repeat;
+        filter: blur(18px) saturate(0.9);
+        opacity: 0.42;
+        transform: scale(1.04);
+      }
+
+      .story-image::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background:
+          repeating-linear-gradient(180deg, rgba(125, 232, 244, 0.06) 0 1px, transparent 1px 7px),
+          linear-gradient(180deg, rgba(2, 4, 5, 0.16) 0%, rgba(2, 4, 5, 0.72) 100%);
+      }
+
+      .story-image img {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 1160px);
+        height: calc(100% - 40px);
+        min-height: 0;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .story-copy {
+        display: grid;
+        align-content: center;
+        width: min(1160px, calc(100% - 40px));
+        min-height: auto;
+        margin: 0 auto 46px;
+        background: rgba(5, 9, 11, 0.94);
+        padding: clamp(22px, 3.6vw, 40px);
+      }
+
+      .scene {
+        margin-bottom: 14px;
+        color: var(--cyan);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+
+      .story-copy p {
+        margin-bottom: 0;
+        color: var(--ink);
+        font-size: clamp(1rem, 1.65vw, 1.18rem);
+      }
+
+      strong {
+        color: #fff;
+        font-weight: 400;
+        text-decoration: underline;
+        text-decoration-color: rgba(255, 60, 72, 0.75);
+        text-underline-offset: 0.26em;
+      }
+
+      .choice {
+        display: inline-block;
+        padding: 0 0.16em;
+      }
+
+      .choice.red {
+        color: #ff9ca3;
+      }
+
+      .choice.green {
+        color: #a2ffb9;
+      }
+
+      .suspects {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .suspect {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+        gap: 0;
+        min-height: 310px;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .suspect-portrait {
+        position: relative;
+        min-height: 310px;
+        margin: 0;
+        overflow: hidden;
+        border-right: 1px solid var(--line);
+        background: #030506;
+      }
+
+      .suspect-portrait img {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+      }
+
+      .suspect-content {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        gap: 14px;
+        padding: clamp(20px, 3vw, 30px);
+      }
+
+      .suspect h3 {
+        margin-bottom: 0;
+        font-size: 1.45rem;
+        font-weight: 400;
+        line-height: 1.32;
+      }
+
+      .role {
+        color: var(--cyan);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+      }
+
+      .profile {
+        display: grid;
+        gap: 6px;
+        padding: 0 0 14px;
+        margin: 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .profile div {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .profile dt {
+        color: var(--faint);
+      }
+
+      .profile dd {
+        margin: 0;
+        text-align: right;
+      }
+
+      .traits {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .traits li + li {
+        margin-top: 0.54em;
+      }
+
+      .traits li::before {
+        color: var(--red);
+        content: "◇ ";
+      }
+
+      .closing {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 0.36fr);
+        gap: 26px;
+        align-items: end;
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .closing p {
+        max-width: 760px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.32rem);
+      }
+
+      .status {
+        border: 1px solid var(--line-strong);
+        background: rgba(125, 232, 244, 0.07);
+        padding: 22px;
+        font-family: var(--mono);
+      }
+
+      .status b,
+      .status span {
+        display: block;
+      }
+
+      .status b {
+        margin-bottom: 7px;
+        color: var(--cyan);
+        font-size: 0.78rem;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+      }
+
+      .status span {
+        color: var(--ink);
+        font-size: 1.15rem;
+      }
+
+      @media (max-width: 760px) {
+        .wrap,
+        .hero-inner,
+        main > section:not(.story-section) {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .hero {
+          min-height: 720px;
+        }
+
+        .hero::before {
+          background:
+            linear-gradient(180deg, rgba(2, 4, 5, 0.52) 0%, rgba(2, 4, 5, 0.88) 58%, #020405 100%),
+            url("assets/09-monitor-wendy.png") center / cover no-repeat;
+        }
+
+        main {
+          padding: 48px 0 72px;
+        }
+
+        section {
+          padding: 42px 0;
+        }
+
+        .section-head,
+        .invitation,
+        .closing {
+          grid-template-columns: 1fr;
+        }
+
+        .story-section .section-head {
+          width: min(100% - 28px, 1160px);
+        }
+
+        .story-card:nth-child(even) .story-image {
+          order: 0;
+        }
+
+        .story-copy,
+        .invite-copy {
+          min-height: auto;
+        }
+
+        .story-image,
+        .invite-image {
+          min-height: 220px;
+        }
+
+        .story-image {
+          min-height: 360px;
+        }
+
+        .story-image img {
+          width: min(100% - 18px, 680px);
+          height: calc(100% - 28px);
+        }
+
+        .story-copy {
+          width: min(100% - 28px, 680px);
+          margin: 0 auto 22px;
+          padding: 20px;
+        }
+
+        .suspects {
+          grid-template-columns: 1fr;
+        }
+
+        .suspect {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+
+        .suspect-portrait {
+          min-height: 420px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Experiment record / participant brief</p>
+        <h1>웬디,<br />어른이 되렴</h1>
+        <p class="subtitle">
+          구양자 박사의 실험시설. 잠에서 깨어난 피험자들 앞에 놓인 것은
+          기능이 정지된 안드로이드와, 두 개의 문과, 한 시간 뒤의 투표였다.
+        </p>
+        <ul class="hero-meta" aria-label="핵심 정보">
+          <li>정확히 오전 9시</li>
+          <li>빨간 문 / 초록 문</li>
+          <li>웬디도 투표권 보유</li>
+          <li>제물은 투표로 결정</li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="invite-title">
+        <div class="section-head">
+          <span class="label">Invitation</span>
+          <h2 id="invite-title">먼저 도착한 것은 설명이 아니라, 부탁이었다.</h2>
+        </div>
+        <div class="invitation">
+          <div class="invite-copy">
+            <blockquote>
+              부디 여러분께 어떤 실험에 대한 협력을 부탁하고 싶어요.<br />
+              실험 내용은 미리 설명해 버리면 의미가 없기 때문에,<br />
+              지금 당장은 알려줄 수 없네요.<br />
+              하지만 여러분의 역할은 실험이 끝날 때쯤 밝혀질 거예요.
+            </blockquote>
+          </div>
+          <figure class="invite-image">
+            <img src="assets/01-invitation.png" alt="어두운 연구실 책상 위의 비밀스러운 초대장" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="story-section" aria-labelledby="story-title">
+        <div class="section-head">
+          <span class="label">Background</span>
+          <h2 id="story-title">실험은 시작되었고, 깨어난 뒤에는 살해 선언만 남았다.</h2>
+        </div>
+
+        <div class="story-list">
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/02-scientist-plan.png')">
+              <img src="assets/02-scientist-plan.png" alt="어두운 실험실에서 계획을 세우는 과학자" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 01</span>
+              <p>저명한 과학자인 구양자 박사는 어떤 실험을 계획했다.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/03-participants.png')">
+              <img src="assets/03-participants.png" alt="각자 다른 개인실에 격리된 피험자들의 실루엣" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 02</span>
+              <p>
+                피험자로 모인 박사의 <strong>⌜조수⌟</strong>, 박사의 친구이기도 한
+                <strong>⌜의사⌟</strong>, 박사의 특집 기사를 썼던
+                <strong>⌜기자⌟</strong>, 여기에 박사의 <strong>⌜남편⌟</strong>도
+                이 실험에 참여하게 된 것 같다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/04-private-room.png')">
+              <img src="assets/04-private-room.png" alt="연구시설 복도에서 개인실로 들어가는 피험자" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 03</span>
+              <p>
+                피험자들은 어느 날 밤, 실험시설에 모였다. 하지만 각 피험자는 도착 직후
+                바로 자신의 개인실로 안내를 받았기 때문에, 이 시점에서는 서로 얼굴을
+                마주친 일이 없었고, 다른 누가 참여하고 있는지도 몰랐다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/05-wendy-guide.png')">
+              <img src="assets/05-wendy-guide.png" alt="피험자를 안내하는 어린 외형의 안드로이드 웬디" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 04</span>
+              <p>
+                피험자들을 안내하는 역할을 맡은 것은 박사가 개발한 AI를 탑재한 안드로이드
+                <strong>⌜웬디⌟</strong>. 인간과 분간할 수 없을 정도의 외형이었지만,
+                정신 연령은 12살 정도라고 한다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/06-head-device.png')">
+              <img src="assets/06-head-device.png" alt="개인실 침대 위의 기묘한 헤드장치" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 05</span>
+              <p>
+                웬디의 안내를 받아 개인실로 들어간 피험자들은 기묘한 헤드장치를 착용하고
+                침대에 누우라는 지시를 받았다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/07-sleep.png')">
+              <img src="assets/07-sleep.png" alt="헤드장치를 착용한 채 잠든 피험자들" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 06</span>
+              <p>웬디가 퇴실한 후, 피험자들은 그대로 잠들어 버렸다.</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/08-dead-wendy.png')">
+              <img src="assets/08-dead-wendy.png" alt="하얀 테이블 위에서 기능 정지된 안드로이드 웬디" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 07</span>
+              <p>
+                얼마 후 깨어나 개인실을 나온 피험자들이 발견한 것은
+                <strong>겁에 질린 모습으로 기능이 정지된 웬디</strong>였다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/08-dead-wendy.png')">
+              <img src="assets/08-dead-wendy.png" alt="왼쪽 눈 카메라가 손상된 웬디의 몸체" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 08</span>
+              <p>
+                웬디는 메인 룸의 하얀 테이블 위에 천장을 바라보며 누워 있었는데, 왼쪽
+                눈, 즉 안구형 카메라가 도려내어 있었고, 그곳에서 마치 피 같은 붉은
+                액체를 흘리고 있었다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/09-monitor-wendy.png')">
+              <img src="assets/09-monitor-wendy.png" alt="거대한 모니터에 영상으로 나타난 웬디" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 09</span>
+              <p>
+                피험자들이 놀라는 가운데, 갑자기 거대한 모니터에 웬디의 모습이 나타나더니
+                태연하게 이야기를 시작했다. <strong>⌜슬픈 일이지만, 제가 살해당한 것
+                같아요. 그 범인은 여러분 중에 있는 게 틀림없어요. — 여기 두 개의 문이
+                있네요?⌟</strong>
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/10-two-doors.png')">
+              <img src="assets/10-two-doors.png" alt="빨간 문과 초록 문이 나란히 선 실험시설 메인 룸" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 10</span>
+              <p>
+                웬디의 말대로, 모니터 왼쪽에는 <span class="choice red">⌜빨간 문⌟</span>이,
+                오른쪽에는 <span class="choice green">⌜초록 문⌟</span>이 보인다.
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/11-red-penalty.png')">
+              <img src="assets/11-red-penalty.png" alt="빨간 경고등 아래 폐쇄된 문을 바라보는 피험자들" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 11</span>
+              <p>
+                <strong>⌜구양자 박사로부터의 메시지가 있습니다. — 이것은 죄를 지은 당신들에
+                대한 페널티이다. 앞으로 당신들의 행동에 따라 두 개의 문 중 어느 하나의
+                문만 열린다. 다만 『빨간 문』을 열었다면 당신들 모두가 이 실험시설에
+                갇히게 될 것이다. 무사히 나가고 싶다면 『초록 문』을 열어라.⌟</strong>
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/12-sacrifice.png')">
+              <img src="assets/12-sacrifice.png" alt="초록 문 앞에서 제물을 정해야 하는 피험자들" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 12</span>
+              <p>
+                웬디는 <strong>오른쪽 — 초록 문</strong>을 가리키며 계속 전언을 이어갔다.
+                <strong>⌜이쪽 문이 열리는 조건은 『당신들 중 누군가를 제물로 삼는 것』이다.
+                제물은 당신들이 투표를 통해 결정해야 한다. 여기에 웬디도 투표권을 가지고
+                있으며, 웬디 본인도 투표의 대상이기도 하다.⌟</strong>
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/14-9am.png')">
+              <img src="assets/14-9am.png" alt="오전 9시를 알리는 화면과 미소 짓는 웬디" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Record 13</span>
+              <p>
+                그리고 웬디는 피험자들을 향해 미소를 지었다.
+                <strong>⌜지금, 정확히 오전 9시입니다. 모두 1시간 정도 이야기를 나눈 후,
+                투표를 하죠. 지금으로서의 저는 『저를 죽인 사람』에게 투표할 예정이니 꼭
+                범인을 가르쳐 주세요.⌟</strong>
+              </p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <figure class="story-image" style="--story-art: url('assets/13-vote.png')">
+              <img src="assets/13-vote.png" alt="투표 카드를 앞에 둔 피험자들의 긴장된 손" />
+            </figure>
+            <div class="story-copy">
+              <span class="scene">Vote</span>
+              <p>이제 남은 것은 한 시간의 대화와, 누군가의 이름을 적는 손뿐이다.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="suspects-title">
+        <div class="section-head">
+          <span class="label">Suspects</span>
+          <h2 id="suspects-title">투표권을 가진 다섯 명.</h2>
+        </div>
+
+        <div class="suspects">
+          <article class="suspect">
+            <figure class="suspect-portrait wendy">
+              <img src="assets/portrait-wendy.png" alt="웬디 캐릭터 삽화" />
+            </figure>
+            <div class="suspect-content">
+              <div>
+                <span class="role">AI</span>
+                <h3>웬디</h3>
+              </div>
+              <dl class="profile">
+                <div>
+                  <dt>성별</dt>
+                  <dd>여성</dd>
+                </div>
+                <div>
+                  <dt>나이</dt>
+                  <dd>외형과 정신 연령 12세 정도</dd>
+                </div>
+                <div>
+                  <dt>직업</dt>
+                  <dd>AI</dd>
+                </div>
+              </dl>
+              <ul class="traits">
+                <li>구양자 박사가 개발한 AI.</li>
+                <li>몸체는 파괴되었기 때문에 모니터의 영상으로 표현된다.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="suspect">
+            <figure class="suspect-portrait park">
+              <img src="assets/portrait-park.png" alt="박민수 캐릭터 삽화" />
+            </figure>
+            <div class="suspect-content">
+              <div>
+                <span class="role">조수</span>
+                <h3>박민수</h3>
+              </div>
+              <dl class="profile">
+                <div>
+                  <dt>성별</dt>
+                  <dd>남성</dd>
+                </div>
+                <div>
+                  <dt>나이</dt>
+                  <dd>29세</dd>
+                </div>
+                <div>
+                  <dt>직업</dt>
+                  <dd>조수</dd>
+                </div>
+              </dl>
+              <ul class="traits">
+                <li>구양자 박사의 조수.</li>
+                <li>실실거리는 경박한 인상이지만, 조수로서의 태도는 지극히 성실하다.</li>
+                <li>집안은 부유하고 금전적인 문제도 없다.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="suspect">
+            <figure class="suspect-portrait seoeun">
+              <img src="assets/portrait-seoeun.png" alt="명서은 캐릭터 삽화" />
+            </figure>
+            <div class="suspect-content">
+              <div>
+                <span class="role">의사</span>
+                <h3>명서은</h3>
+              </div>
+              <dl class="profile">
+                <div>
+                  <dt>성별</dt>
+                  <dd>여성</dd>
+                </div>
+                <div>
+                  <dt>나이</dt>
+                  <dd>37세</dd>
+                </div>
+                <div>
+                  <dt>직업</dt>
+                  <dd>의사</dd>
+                </div>
+              </dl>
+              <ul class="traits">
+                <li>쿨한 인상의 지적인 여성.</li>
+                <li>재활의학과 의사이다.</li>
+                <li>구양자 박사의 친구이기도 하다.</li>
+                <li>피곤한 듯 안색이 좋지 않다.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="suspect">
+            <figure class="suspect-portrait jinhyun">
+              <img src="assets/portrait-jinhyun.png" alt="안진현 캐릭터 삽화" />
+            </figure>
+            <div class="suspect-content">
+              <div>
+                <span class="role">기자</span>
+                <h3>안진현</h3>
+              </div>
+              <dl class="profile">
+                <div>
+                  <dt>성별</dt>
+                  <dd>남성</dd>
+                </div>
+                <div>
+                  <dt>나이</dt>
+                  <dd>51세</dd>
+                </div>
+                <div>
+                  <dt>직업</dt>
+                  <dd>기자</dd>
+                </div>
+              </dl>
+              <ul class="traits">
+                <li>싸구려에 낡아 빠진 옷을 입고 있다.</li>
+                <li>4년 전에 구양자 박사의 기사를 썼고 그 내용이 높이 평가되었다.</li>
+                <li>학자에 대해 존경심이 강하고 저자세다.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="suspect">
+            <figure class="suspect-portrait jeonghyeok">
+              <img src="assets/portrait-jeonghyeok.png" alt="유정혁 캐릭터 삽화" />
+            </figure>
+            <div class="suspect-content">
+              <div>
+                <span class="role">남편</span>
+                <h3>유정혁</h3>
+              </div>
+              <dl class="profile">
+                <div>
+                  <dt>성별</dt>
+                  <dd>남성</dd>
+                </div>
+                <div>
+                  <dt>나이</dt>
+                  <dd>40대 초반</dd>
+                </div>
+                <div>
+                  <dt>직업</dt>
+                  <dd>남편</dd>
+                </div>
+              </dl>
+              <ul class="traits">
+                <li>구양자 박사의 남편.</li>
+                <li>상냥하고 정직한 인상을 준다.</li>
+                <li>결혼 후에는 전업주부가 되었다.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-title">
+        <div>
+          <span class="label">Start</span>
+          <h2 id="closing-title">웬디는 누구에게 투표할 것인가.</h2>
+          <p>
+            죽은 몸체와 살아 있는 영상. 닫힌 문과 열릴 문. 이 실험시설에서 나가기 위해,
+            피험자들은 웬디를 죽인 사람의 이름을 찾아야 한다.
+          </p>
+        </div>
+        <div class="status" aria-label="현재 상태">
+          <b>DISCUSSION WINDOW</b>
+          <span>09:00부터 1시간</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
