@@ -259,12 +259,13 @@
       .story-section {
         width: 100%;
         max-width: 100%;
-        padding-top: 0;
+        padding-top: 42px;
       }
 
       .story-section .section-head {
         width: min(1160px, calc(100% - 40px));
         margin-inline: auto;
+        margin-bottom: 26px;
       }
 
       .story-card {
@@ -340,6 +341,12 @@
         margin-bottom: 0;
         color: var(--ink);
         font-size: clamp(1rem, 1.65vw, 1.18rem);
+      }
+
+      .story-copy p + p {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
       }
 
       strong {
@@ -532,6 +539,7 @@
 
         .story-section .section-head {
           width: min(100% - 28px, 1160px);
+          margin-bottom: 20px;
         }
 
         .story-card:nth-child(even) .story-image {
@@ -652,8 +660,8 @@
           </article>
 
           <article class="story-card">
-            <figure class="story-image" style="--story-art: url('assets/04-private-room.png')">
-              <img src="assets/04-private-room.png" alt="연구시설 복도에서 개인실로 들어가는 피험자" />
+            <figure class="story-image" style="--story-art: url('assets/05-wendy-guide.png')">
+              <img src="assets/05-wendy-guide.png" alt="피험자를 안내하는 어린 외형의 안드로이드 웬디" />
             </figure>
             <div class="story-copy">
               <span class="scene">Record 03</span>
@@ -662,15 +670,6 @@
                 바로 자신의 개인실로 안내를 받았기 때문에, 이 시점에서는 서로 얼굴을
                 마주친 일이 없었고, 다른 누가 참여하고 있는지도 몰랐다.
               </p>
-            </div>
-          </article>
-
-          <article class="story-card">
-            <figure class="story-image" style="--story-art: url('assets/05-wendy-guide.png')">
-              <img src="assets/05-wendy-guide.png" alt="피험자를 안내하는 어린 외형의 안드로이드 웬디" />
-            </figure>
-            <div class="story-copy">
-              <span class="scene">Record 04</span>
               <p>
                 피험자들을 안내하는 역할을 맡은 것은 박사가 개발한 AI를 탑재한 안드로이드
                 <strong>⌜웬디⌟</strong>. 인간과 분간할 수 없을 정도의 외형이었지만,
@@ -684,7 +683,7 @@
               <img src="assets/06-head-device.png" alt="개인실 침대 위의 기묘한 헤드장치" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 05</span>
+              <span class="scene">Record 04</span>
               <p>
                 웬디의 안내를 받아 개인실로 들어간 피험자들은 기묘한 헤드장치를 착용하고
                 침대에 누우라는 지시를 받았다.
@@ -697,7 +696,7 @@
               <img src="assets/07-sleep.png" alt="헤드장치를 착용한 채 잠든 피험자들" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 06</span>
+              <span class="scene">Record 05</span>
               <p>웬디가 퇴실한 후, 피험자들은 그대로 잠들어 버렸다.</p>
             </div>
           </article>
@@ -707,20 +706,11 @@
               <img src="assets/08-dead-wendy.png" alt="하얀 테이블 위에서 기능 정지된 안드로이드 웬디" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 07</span>
+              <span class="scene">Record 06</span>
               <p>
                 얼마 후 깨어나 개인실을 나온 피험자들이 발견한 것은
                 <strong>겁에 질린 모습으로 기능이 정지된 웬디</strong>였다.
               </p>
-            </div>
-          </article>
-
-          <article class="story-card">
-            <figure class="story-image" style="--story-art: url('assets/08-dead-wendy.png')">
-              <img src="assets/08-dead-wendy.png" alt="왼쪽 눈 카메라가 손상된 웬디의 몸체" />
-            </figure>
-            <div class="story-copy">
-              <span class="scene">Record 08</span>
               <p>
                 웬디는 메인 룸의 하얀 테이블 위에 천장을 바라보며 누워 있었는데, 왼쪽
                 눈, 즉 안구형 카메라가 도려내어 있었고, 그곳에서 마치 피 같은 붉은
@@ -734,7 +724,7 @@
               <img src="assets/09-monitor-wendy.png" alt="거대한 모니터에 영상으로 나타난 웬디" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 09</span>
+              <span class="scene">Record 07</span>
               <p>
                 피험자들이 놀라는 가운데, 갑자기 거대한 모니터에 웬디의 모습이 나타나더니
                 태연하게 이야기를 시작했다. <strong>⌜슬픈 일이지만, 제가 살해당한 것
@@ -749,7 +739,7 @@
               <img src="assets/10-two-doors.png" alt="빨간 문과 초록 문이 나란히 선 실험시설 메인 룸" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 10</span>
+              <span class="scene">Record 08</span>
               <p>
                 웬디의 말대로, 모니터 왼쪽에는 <span class="choice red">⌜빨간 문⌟</span>이,
                 오른쪽에는 <span class="choice green">⌜초록 문⌟</span>이 보인다.
@@ -762,7 +752,7 @@
               <img src="assets/11-red-penalty.png" alt="빨간 경고등 아래 폐쇄된 문을 바라보는 피험자들" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 11</span>
+              <span class="scene">Record 09</span>
               <p>
                 <strong>⌜구양자 박사로부터의 메시지가 있습니다. — 이것은 죄를 지은 당신들에
                 대한 페널티이다. 앞으로 당신들의 행동에 따라 두 개의 문 중 어느 하나의
@@ -777,7 +767,7 @@
               <img src="assets/12-sacrifice.png" alt="초록 문 앞에서 제물을 정해야 하는 피험자들" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 12</span>
+              <span class="scene">Record 10</span>
               <p>
                 웬디는 <strong>오른쪽 — 초록 문</strong>을 가리키며 계속 전언을 이어갔다.
                 <strong>⌜이쪽 문이 열리는 조건은 『당신들 중 누군가를 제물로 삼는 것』이다.
@@ -792,22 +782,13 @@
               <img src="assets/14-9am.png" alt="오전 9시를 알리는 화면과 미소 짓는 웬디" />
             </figure>
             <div class="story-copy">
-              <span class="scene">Record 13</span>
+              <span class="scene">Record 11</span>
               <p>
                 그리고 웬디는 피험자들을 향해 미소를 지었다.
                 <strong>⌜지금, 정확히 오전 9시입니다. 모두 1시간 정도 이야기를 나눈 후,
                 투표를 하죠. 지금으로서의 저는 『저를 죽인 사람』에게 투표할 예정이니 꼭
                 범인을 가르쳐 주세요.⌟</strong>
               </p>
-            </div>
-          </article>
-
-          <article class="story-card">
-            <figure class="story-image" style="--story-art: url('assets/13-vote.png')">
-              <img src="assets/13-vote.png" alt="투표 카드를 앞에 둔 피험자들의 긴장된 손" />
-            </figure>
-            <div class="story-copy">
-              <span class="scene">Vote</span>
               <p>이제 남은 것은 한 시간의 대화와, 누군가의 이름을 적는 손뿐이다.</p>
             </div>
           </article>
