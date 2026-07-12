@@ -502,6 +502,39 @@
         font-size: 1.35rem;
       }
 
+      .bgm-toggle {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(179, 42, 37, 0.78);
+        background: rgba(0, 0, 0, 0.88);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        padding: 11px 14px;
+        cursor: pointer;
+      }
+
+      .bgm-toggle::before {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--blood-bright);
+        box-shadow: 0 0 14px rgba(179, 42, 37, 0.72);
+        content: "";
+      }
+
+      .bgm-toggle[aria-pressed="true"]::before {
+        background: #fff;
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.66);
+      }
+
       @media (max-width: 920px) {
         .evidence-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -599,6 +632,12 @@
 
         .evidence-grid {
           grid-template-columns: 1fr;
+        }
+
+        .bgm-toggle {
+          right: 14px;
+          bottom: 14px;
+          padding: 10px 12px;
         }
       }
     </style>
@@ -944,5 +983,44 @@
         </div>
       </section>
     </main>
+    <button class="bgm-toggle" type="button" aria-pressed="false" aria-label="배경음악 재생">
+      BGM <span data-bgm-label>재생</span>
+    </button>
+    <audio id="bgm-audio" src="assets/bgm-onsen-ryokan-13.mp3" preload="none" loop></audio>
+    <script>
+      (() => {
+        const button = document.querySelector(".bgm-toggle");
+        const audio = document.querySelector("#bgm-audio");
+        const label = document.querySelector("[data-bgm-label]");
+
+        if (!button || !audio || !label) return;
+
+        audio.volume = 0.42;
+
+        const sync = () => {
+          const playing = !audio.paused;
+          button.setAttribute("aria-pressed", String(playing));
+          button.setAttribute("aria-label", playing ? "배경음악 정지" : "배경음악 재생");
+          label.textContent = playing ? "정지" : "재생";
+        };
+
+        button.addEventListener("click", async () => {
+          try {
+            if (audio.paused) {
+              await audio.play();
+            } else {
+              audio.pause();
+            }
+          } catch (error) {
+            label.textContent = "재생 불가";
+            button.setAttribute("aria-pressed", "false");
+          }
+        });
+
+        audio.addEventListener("play", sync);
+        audio.addEventListener("pause", sync);
+        sync();
+      })();
+    </script>
   </body>
 </html>
