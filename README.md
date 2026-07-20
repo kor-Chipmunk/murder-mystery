@@ -6,5 +6,5 @@
 
 | 제목 | 링크 |
 | --- | --- |
-| 시체와 온천 | [참가자 랜딩 페이지](https://kor-chipmunk.github.io/murder-mystery/%E1%84%89%E1%85%B5%E1%84%8E%E1%85%A6%E1%84%8B%E1%85%AA%20%E1%84%8B%E1%85%A9%E1%86%AB%E1%84%8E%E1%85%A5%E1%86%AB/) |
-| 웬디, 어른이 되렴 | [참가자 랜딩 페이지](https://kor-chipmunk.github.io/murder-mystery/%E1%84%8B%E1%85%B0%E1%86%AB%E1%84%83%E1%85%B5%2C%20%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B3%E1%86%AB%E1%84%8B%E1%85%B5%20%E1%84%83%E1%85%AC%E1%84%85%E1%85%A7%E1%86%B7/) |
+| 시체와 온천 | [참가자 랜딩 페이지](https://kor-chipmunk.github.io/murder-mystery/%EC%8B%9C%EC%B2%B4%EC%99%80%20%EC%98%A8%EC%B2%9C/) |
+| 웬디, 어른이 되렴 | [참가자 랜딩 페이지](https://kor-chipmunk.github.io/murder-mystery/%EC%9B%AC%EB%94%94,%20%EC%96%B4%EB%A5%B8%EC%9D%B4%20%EB%90%98%EB%A0%B4/) |
