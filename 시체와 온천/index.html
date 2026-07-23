@@ -749,7 +749,7 @@
         background:
           #050505
           url("assets/00-cast-reference.png")
-          var(--cast-left) center / var(--cast-width) var(--cast-height) no-repeat;
+          center / var(--cast-width) var(--cast-height) no-repeat;
         isolation: isolate;
         transition: background-position 320ms ease;
       }
@@ -838,6 +838,10 @@
         .suspects {
           --cast-width: calc(100svh * 1.5);
           --cast-height: 100svh;
+        }
+
+        .cast-stage {
+          background-position: var(--cast-left) center;
         }
 
         .suspect-content {
