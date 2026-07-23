@@ -1,0 +1,1623 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="처음 머더 미스터리를 플레이하는 사람을 위한 약속, 몰입, 추리, 매너 가이드">
+  <meta name="theme-color" content="#12152b">
+  <title>머더 미스터리를 더 재미있게 즐기기 위해서 — 초보자 가이드</title>
+  <style>
+    :root {
+      --night: #12152b;
+      --night-soft: #202640;
+      --paper: #f6f8fc;
+      --white: #ffffff;
+      --ink: #1d2338;
+      --muted: #687089;
+      --line: #dce1ec;
+      --violet: #6756d9;
+      --violet-pale: #ece9ff;
+      --coral: #f26464;
+      --coral-pale: #fff0ef;
+      --cyan: #66d9d3;
+      --cyan-pale: #e8fbfa;
+      --shadow: 0 22px 60px rgba(25, 31, 64, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --content: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(103, 86, 217, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103, 86, 217, 0.025) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      line-height: 1.72;
+      word-break: keep-all;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 100;
+      top: 10px;
+      left: 10px;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--violet);
+      border-radius: 10px;
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 90;
+      inset: 0 0 auto;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .progress__bar {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), #b8fff7);
+      transition: width 80ms linear;
+    }
+
+    .topbar {
+      position: sticky;
+      z-index: 80;
+      top: 0;
+      height: 74px;
+      color: var(--white);
+      background: rgba(18, 21, 43, 0.94);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar__inner {
+      width: min(calc(100% - 40px), var(--content));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand__mark {
+      display: grid;
+      width: 34px;
+      aspect-ratio: 1;
+      place-items: center;
+      color: var(--night);
+      background: var(--cyan);
+      border-radius: 50% 50% 50% 10%;
+      font-size: 12px;
+      letter-spacing: -0.08em;
+      transform: rotate(-7deg);
+    }
+
+    .brand__mark span {
+      transform: rotate(7deg);
+    }
+
+    .brand small {
+      color: #aab2cd;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .topbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .utility-button {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 0 14px;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .utility-button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--night);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      width: 720px;
+      height: 720px;
+      top: -420px;
+      right: -120px;
+      border: 1px solid rgba(102, 217, 211, 0.3);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 80px rgba(102, 217, 211, 0.035),
+        0 0 0 160px rgba(103, 86, 217, 0.035);
+    }
+
+    .hero::after {
+      content: "CONFIDENTIAL • PLAYER GUIDE • CONFIDENTIAL • PLAYER GUIDE •";
+      position: absolute;
+      z-index: -1;
+      right: -60px;
+      bottom: 44px;
+      width: 510px;
+      color: rgba(255, 255, 255, 0.045);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      transform: rotate(-8deg);
+    }
+
+    .hero__inner {
+      width: min(calc(100% - 40px), var(--content));
+      min-height: 630px;
+      margin: 0 auto;
+      padding: 90px 0 82px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+      align-items: center;
+      gap: 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 24px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin-bottom: 28px;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: clamp(46px, 6.3vw, 84px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.065em;
+    }
+
+    h1 em {
+      position: relative;
+      color: var(--cyan);
+      font-style: normal;
+      white-space: nowrap;
+    }
+
+    h1 em::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      height: 8px;
+      background: url("data:image/svg+xml,%3Csvg width='120' height='8' viewBox='0 0 120 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.5C27 1 48 7 75 3.5c18-2.2 30 .5 44-1.5' fill='none' stroke='%2366d9d3' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+      background-size: 120px 8px;
+      opacity: 0.7;
+    }
+
+    .hero__lead {
+      max-width: 670px;
+      margin-bottom: 34px;
+      color: #c7cee2;
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.8;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .primary-button {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      color: var(--night);
+      background: var(--cyan);
+      border: 0;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(102, 217, 211, 0.18);
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(102, 217, 211, 0.28);
+    }
+
+    .read-time {
+      color: #aab2cd;
+      font-size: 14px;
+    }
+
+    .case-card {
+      position: relative;
+      padding: 30px 28px 26px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: 8px 8px 26px 8px;
+      box-shadow: 22px 24px 0 rgba(103, 86, 217, 0.16);
+      transform: rotate(2.5deg);
+    }
+
+    .case-card::before {
+      content: "";
+      position: absolute;
+      width: 74px;
+      height: 20px;
+      top: -11px;
+      left: calc(50% - 37px);
+      background: rgba(102, 217, 211, 0.78);
+      transform: rotate(-3deg);
+    }
+
+    .case-card__label {
+      margin-bottom: 22px;
+      color: var(--violet);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .case-card__title {
+      margin-bottom: 18px;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: 29px;
+      line-height: 1.35;
+      letter-spacing: -0.045em;
+    }
+
+    .case-card__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .case-card__list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px dashed var(--line);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .case-card__list strong {
+      flex: 0 0 72px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .intro {
+      width: min(calc(100% - 40px), var(--content));
+      margin: -1px auto 0;
+      padding: 64px 0 38px;
+    }
+
+    .intro__strip {
+      display: grid;
+      grid-template-columns: 1.35fr repeat(3, 0.55fr);
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .intro__message {
+      padding: 34px 38px;
+      color: var(--white);
+      background: var(--violet);
+    }
+
+    .intro__message p {
+      margin: 0;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: -0.03em;
+    }
+
+    .intro__value {
+      min-height: 146px;
+      padding: 28px 22px;
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .intro__value span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .intro__value strong {
+      font-size: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .guide-layout {
+      width: min(calc(100% - 40px), var(--content));
+      margin: 0 auto;
+      padding: 60px 0 110px;
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      align-items: start;
+      gap: 72px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 106px;
+    }
+
+    .toc__label {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-left: 1px solid var(--line);
+    }
+
+    .toc a {
+      position: relative;
+      display: block;
+      padding: 11px 0 11px 22px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .toc a::before {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 0;
+      top: 50%;
+      left: -2px;
+      background: var(--violet);
+      border-radius: 3px;
+      transform: translateY(-50%);
+      transition: height 150ms ease;
+    }
+
+    .toc a:hover,
+    .toc a[aria-current="true"] {
+      color: var(--violet);
+    }
+
+    .toc a[aria-current="true"]::before {
+      height: 26px;
+    }
+
+    .toc__note {
+      margin-top: 24px;
+      padding: 16px;
+      color: var(--muted);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .chapter {
+      margin-bottom: 100px;
+    }
+
+    .chapter:last-child {
+      margin-bottom: 0;
+    }
+
+    .chapter__header {
+      position: relative;
+      margin-bottom: 36px;
+      padding-bottom: 26px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .chapter__kicker {
+      margin-bottom: 9px;
+      color: var(--violet);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .chapter h2 {
+      margin-bottom: 12px;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.2;
+      letter-spacing: -0.055em;
+    }
+
+    .chapter__summary {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .chapter__stamp {
+      position: absolute;
+      right: 8px;
+      bottom: 24px;
+      color: var(--coral);
+      border: 3px double var(--coral);
+      border-radius: 8px;
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform: rotate(-7deg);
+      opacity: 0.8;
+    }
+
+    .tip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tip-card {
+      position: relative;
+      min-height: 240px;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .tip-card:hover {
+      z-index: 2;
+      border-color: #c7c0ff;
+      box-shadow: 0 16px 40px rgba(29, 35, 56, 0.09);
+      transform: translateY(-4px);
+    }
+
+    .tip-card--wide {
+      grid-column: 1 / -1;
+      min-height: auto;
+    }
+
+    .tip-card--cyan {
+      background: var(--cyan-pale);
+      border-color: #b7eeeb;
+    }
+
+    .tip-card--coral {
+      background: var(--coral-pale);
+      border-color: #ffd0cc;
+    }
+
+    .tip-card__icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 22px;
+      place-items: center;
+      color: var(--violet);
+      background: var(--violet-pale);
+      border-radius: 13px;
+      font-size: 20px;
+    }
+
+    .tip-card--cyan .tip-card__icon {
+      color: #087c76;
+      background: rgba(102, 217, 211, 0.28);
+    }
+
+    .tip-card--coral .tip-card__icon {
+      color: #ba3434;
+      background: rgba(242, 100, 100, 0.16);
+    }
+
+    .tip-card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+    }
+
+    .tip-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .tip-card strong {
+      color: var(--ink);
+    }
+
+    .phrase-lab {
+      margin: 22px 0;
+      overflow: hidden;
+      background: var(--night);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .phrase-lab__head {
+      padding: 26px 30px 20px;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .phrase-lab__head span {
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .phrase-lab__head h3 {
+      margin: 5px 0 0;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: 27px;
+      letter-spacing: -0.04em;
+    }
+
+    .phrase-row {
+      display: grid;
+      grid-template-columns: 1fr 38px 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .phrase-row:last-child {
+      border-bottom: 0;
+    }
+
+    .phrase-row p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .phrase-row__before {
+      color: #aab2cd;
+      text-decoration: line-through;
+      text-decoration-color: var(--coral);
+      text-decoration-thickness: 2px;
+    }
+
+    .phrase-row__arrow {
+      color: var(--cyan);
+      text-align: center;
+    }
+
+    .phrase-row__after {
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .meta-board {
+      margin: 22px 0;
+      padding: 32px;
+      color: var(--white);
+      background: var(--violet);
+      border-radius: var(--radius-lg);
+    }
+
+    .meta-board__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 26px;
+    }
+
+    .meta-board__header h3 {
+      max-width: 520px;
+      margin: 0;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: 30px;
+      line-height: 1.35;
+      letter-spacing: -0.04em;
+    }
+
+    .meta-board__badge {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      color: var(--night);
+      background: var(--cyan);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .meta-examples {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta-examples li {
+      padding: 15px 16px;
+      background: rgba(18, 21, 43, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      color: #f1efff;
+      font-size: 13px;
+    }
+
+    .meta-rule {
+      margin: 20px 0 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #dedaff;
+      font-size: 14px;
+    }
+
+    .meta-rule strong {
+      color: var(--cyan);
+    }
+
+    .golden-rule {
+      position: relative;
+      margin: 30px 0;
+      padding: 42px 44px;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--night);
+      border-radius: var(--radius-lg);
+    }
+
+    .golden-rule::after {
+      content: "“";
+      position: absolute;
+      right: 22px;
+      bottom: -70px;
+      color: rgba(102, 217, 211, 0.13);
+      font-family: Georgia, serif;
+      font-size: 240px;
+      line-height: 1;
+    }
+
+    .golden-rule span {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .golden-rule blockquote {
+      max-width: 680px;
+      margin: 0;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.45;
+      letter-spacing: -0.045em;
+    }
+
+    .checklist {
+      padding: 36px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .checklist__head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .checklist h3 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: 30px;
+      letter-spacing: -0.045em;
+    }
+
+    .checklist__count {
+      color: var(--violet);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .checklist__items {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 15px;
+      background: var(--paper);
+      border: 1px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: border-color 150ms ease, background 150ms ease;
+    }
+
+    .check-item:hover {
+      border-color: #c7c0ff;
+    }
+
+    .check-item input {
+      width: 19px;
+      height: 19px;
+      margin: 2px 0 0;
+      accent-color: var(--violet);
+    }
+
+    .check-item span {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .check-item:has(input:checked) {
+      color: var(--muted);
+      background: var(--violet-pale);
+    }
+
+    .check-item:has(input:checked) span {
+      text-decoration: line-through;
+    }
+
+    .checklist__reset {
+      margin-top: 18px;
+      padding: 8px 0;
+      color: var(--muted);
+      background: none;
+      border: 0;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .closing {
+      color: var(--white);
+      background: var(--night);
+    }
+
+    .closing__inner {
+      width: min(calc(100% - 40px), 900px);
+      margin: 0 auto;
+      padding: 96px 0;
+      text-align: center;
+    }
+
+    .closing__symbol {
+      display: grid;
+      width: 64px;
+      aspect-ratio: 1;
+      margin: 0 auto 26px;
+      place-items: center;
+      color: var(--night);
+      background: var(--cyan);
+      border-radius: 50% 50% 50% 12%;
+      font-size: 25px;
+      transform: rotate(-8deg);
+    }
+
+    .closing__symbol span {
+      transform: rotate(8deg);
+    }
+
+    .closing h2 {
+      margin-bottom: 20px;
+      font-family: "Iowan Old Style", "Noto Serif KR", "AppleMyungjo", serif;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.2;
+      letter-spacing: -0.06em;
+    }
+
+    .closing p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #b8c0d8;
+      font-size: 17px;
+    }
+
+    .closing strong {
+      color: var(--cyan);
+    }
+
+    .footer {
+      padding: 22px 20px;
+      color: #8f98b4;
+      background: #0c0f20;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .hero__inner {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 70px 0 76px;
+      }
+
+      .case-card {
+        max-width: 440px;
+        transform: rotate(1deg);
+      }
+
+      .intro__strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .intro__message {
+        grid-column: 1 / -1;
+      }
+
+      .guide-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .toc__label,
+      .toc__note {
+        display: none;
+      }
+
+      .toc ol {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 5px;
+        border-left: 0;
+        scrollbar-width: thin;
+      }
+
+      .toc li {
+        flex: 0 0 auto;
+      }
+
+      .toc a {
+        padding: 9px 14px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+      }
+
+      .toc a::before {
+        display: none;
+      }
+
+      .toc a[aria-current="true"] {
+        color: var(--white);
+        background: var(--violet);
+        border-color: var(--violet);
+      }
+    }
+
+    @media (max-width: 640px) {
+      html {
+        scroll-padding-top: 72px;
+      }
+
+      .topbar {
+        height: 64px;
+      }
+
+      .topbar__inner,
+      .hero__inner,
+      .intro,
+      .guide-layout {
+        width: min(calc(100% - 28px), var(--content));
+      }
+
+      .brand small,
+      .utility-button .button-label {
+        display: none;
+      }
+
+      .utility-button {
+        width: 40px;
+        padding: 0;
+      }
+
+      .hero__inner {
+        padding-top: 56px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 14vw, 62px);
+      }
+
+      .hero__lead {
+        font-size: 16px;
+      }
+
+      .intro {
+        padding-top: 42px;
+      }
+
+      .intro__strip {
+        grid-template-columns: 1fr;
+      }
+
+      .intro__message {
+        grid-column: auto;
+        padding: 28px;
+      }
+
+      .intro__value {
+        min-height: 104px;
+        padding: 22px 26px;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .guide-layout {
+        padding-top: 38px;
+        padding-bottom: 76px;
+      }
+
+      .chapter {
+        margin-bottom: 72px;
+      }
+
+      .chapter__stamp {
+        position: static;
+        display: inline-block;
+        margin-top: 18px;
+      }
+
+      .tip-grid,
+      .meta-examples,
+      .checklist__items {
+        grid-template-columns: 1fr;
+      }
+
+      .tip-card {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .phrase-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 18px 24px;
+      }
+
+      .phrase-row__arrow {
+        text-align: left;
+        transform: rotate(90deg);
+        transform-origin: 10px center;
+      }
+
+      .meta-board {
+        padding: 26px 22px;
+      }
+
+      .meta-board__header {
+        display: block;
+      }
+
+      .meta-board__badge {
+        display: inline-block;
+        margin-top: 14px;
+      }
+
+      .golden-rule {
+        padding: 34px 26px;
+      }
+
+      .checklist {
+        padding: 28px 22px;
+      }
+
+      .checklist__head {
+        display: block;
+      }
+
+      .checklist__count {
+        display: block;
+        margin-top: 7px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+
+    @media print {
+      .progress,
+      .topbar,
+      .toc,
+      .hero__actions,
+      .checklist__reset {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .hero,
+      .closing {
+        color: #111;
+        background: #fff;
+      }
+
+      .hero__inner {
+        min-height: auto;
+        display: block;
+        padding: 40px 0;
+      }
+
+      .hero__lead,
+      .closing p {
+        color: #444;
+      }
+
+      .case-card,
+      .intro__strip,
+      .tip-card,
+      .checklist {
+        box-shadow: none;
+      }
+
+      .case-card {
+        margin-top: 30px;
+        border: 1px solid #aaa;
+        transform: none;
+      }
+
+      .guide-layout {
+        display: block;
+      }
+
+      .chapter {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#top" aria-label="가이드 맨 위로">
+        <span class="brand__mark"><span>MM</span></span>
+        <span>플레이어 가이드</span>
+        <small>Case file 01</small>
+      </a>
+      <div class="topbar__actions">
+        <button class="utility-button" id="shareButton" type="button" aria-label="이 가이드 공유하기">
+          <span aria-hidden="true">↗</span><span class="button-label">공유</span>
+        </button>
+        <button class="utility-button" id="printButton" type="button" aria-label="가이드 인쇄하기">
+          <span aria-hidden="true">⌑</span><span class="button-label">인쇄</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__inner">
+        <div>
+          <p class="eyebrow">초보 플레이어 공지</p>
+          <h1>머더 미스터리를<br><em>더 재미있게</em><br>즐기기 위해서</h1>
+          <p class="hero__lead">
+            범인을 맞히는 것만큼 중요한 건, 함께 하나의 이야기를 완성하는 일입니다.
+            첫 게임을 앞둔 플레이어가 꼭 알아두면 좋은 약속과 몰입의 기술을 모았습니다.
+          </p>
+          <div class="hero__actions">
+            <a class="primary-button" href="#before">가이드 시작하기 <span aria-hidden="true">↓</span></a>
+            <span class="read-time">약 8분 · 스포일러 없음</span>
+          </div>
+        </div>
+
+        <aside class="case-card" aria-label="가이드 요약">
+          <p class="case-card__label">Player briefing</p>
+          <h2 class="case-card__title">오늘의 사건보다<br>먼저 확인할 것</h2>
+          <ul class="case-card__list">
+            <li><strong>목표</strong><span>함께 즐거운 이야기 만들기</span></li>
+            <li><strong>핵심 단서</strong><span>약속 · 몰입 · 배려</span></li>
+            <li><strong>금지 사항</strong><span>메타 추리와 감정적 공격</span></li>
+            <li><strong>권장 태도</strong><span>끝까지 캐릭터의 편이 되기</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro" aria-label="가이드의 관점">
+      <div class="intro__strip">
+        <div class="intro__message">
+          <p>이 가이드는 정답이 아니라, 모두의 단 한 번뿐인 플레이를 지키기 위한 제안입니다.</p>
+        </div>
+        <div class="intro__value">
+          <span>Promise</span>
+          <strong>약속을 지키고</strong>
+        </div>
+        <div class="intro__value">
+          <span>Immerse</span>
+          <strong>이야기에 몰입하고</strong>
+        </div>
+        <div class="intro__value">
+          <span>Respect</span>
+          <strong>사람을 배려하기</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="guide-layout">
+      <nav class="toc" aria-label="가이드 목차">
+        <p class="toc__label">사건 진행 순서</p>
+        <ol>
+          <li><a href="#before">게임 전의 마음가짐</a></li>
+          <li><a href="#during">게임 중 주의할 점</a></li>
+          <li><a href="#after">게임이 끝난 뒤</a></li>
+          <li><a href="#checklist">출발 전 체크리스트</a></li>
+        </ol>
+        <p class="toc__note">한 시나리오는 보통 단 한 번만 온전히 즐길 수 있습니다. 서로의 경험을 소중히 다뤄주세요.</p>
+      </nav>
+
+      <div class="guide-content">
+        <section class="chapter" id="before">
+          <header class="chapter__header">
+            <p class="chapter__kicker">Chapter 01 · Before</p>
+            <h2>게임 전의 마음가짐</h2>
+            <p class="chapter__summary">좋은 플레이는 사건이 시작되기 전부터 시작됩니다. 사람과 시간, 그리고 아직 만나지 않은 이야기를 존중해주세요.</p>
+            <span class="chapter__stamp" aria-hidden="true">Ready</span>
+          </header>
+
+          <div class="tip-grid">
+            <article class="tip-card tip-card--cyan">
+              <div class="tip-card__icon" aria-hidden="true">⌚</div>
+              <h3>시간과 약속 지키기</h3>
+              <p>
+                머더 미스터리는 한 명만 없어도 진행하기 어려운 <strong>사람 중심의 게임</strong>입니다.
+                온라인이든 오프라인이든 시작부터 끝까지 함께할 시간을 확보하고, 늦지 않게 도착해주세요.
+              </p>
+            </article>
+
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">◇</div>
+              <h3>장르와 작가에 대한 편견 내려놓기</h3>
+              <p>
+                “이 장르는 나와 안 맞아”, “이 작가 작품은 늘 그래”라는 선입견은 뜻밖의 인생작을 놓치게 하고,
+                게임 밖의 정보로 답을 찾는 메타 추리의 씨앗이 될 수 있습니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter" id="during">
+          <header class="chapter__header">
+            <p class="chapter__kicker">Chapter 02 · During</p>
+            <h2>게임 중 주의할 점</h2>
+            <p class="chapter__summary">룰을 지키되 이야기 안에서는 과감하게. 캐릭터로 말하고, 플레이어를 배려하세요.</p>
+            <span class="chapter__stamp" aria-hidden="true">In play</span>
+          </header>
+
+          <div class="tip-grid">
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">⌕</div>
+              <h3>룰과 설정서는 꼼꼼하게</h3>
+              <p>
+                카드 공개 방식, 조사 제한, 특수 능력은 작품마다 다릅니다. 작은 에러도 연결된 캐릭터의 경험까지 바꿀 수 있으니,
+                <strong>관계·목표·능력</strong>을 특히 주의해서 확인하세요.
+              </p>
+            </article>
+
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">♙</div>
+              <h3>캐릭터의 편이 되기</h3>
+              <p>
+                그 인생이 100% 이해되지 않아도 괜찮습니다. 다른 사람의 이야기를 듣듯 마음을 따라가고,
+                캐릭터가 간절히 바라는 목표를 쉽게 포기하거나 비밀을 가볍게 넘기지 마세요.
+              </p>
+            </article>
+          </div>
+
+          <div class="phrase-lab" aria-labelledby="phrase-title">
+            <header class="phrase-lab__head">
+              <span>Roleplay phrase lab</span>
+              <h3 id="phrase-title">설정서가 아니라, 기억으로 말하기</h3>
+            </header>
+            <div class="phrase-row">
+              <p class="phrase-row__before">“내 설정서에는 그렇게 써 있었어.”</p>
+              <span class="phrase-row__arrow" aria-hidden="true">→</span>
+              <p class="phrase-row__after">“나는 그런 기억이 있어.”</p>
+            </div>
+            <div class="phrase-row">
+              <p class="phrase-row__before">“써 있는 대로 읽어줄게.”</p>
+              <span class="phrase-row__arrow" aria-hidden="true">→</span>
+              <p class="phrase-row__after">“내 생각을 그대로 말해줄게.”</p>
+            </div>
+            <div class="phrase-row">
+              <p class="phrase-row__before">“여기에 네가 했다고 쓰여 있는데?”</p>
+              <span class="phrase-row__arrow" aria-hidden="true">→</span>
+              <p class="phrase-row__after">“네가 한 걸 똑똑히 기억하는데?”</p>
+            </div>
+            <div class="phrase-row">
+              <p class="phrase-row__before">“기억 안 나니까 다시 읽어볼게.”</p>
+              <span class="phrase-row__arrow" aria-hidden="true">→</span>
+              <p class="phrase-row__after">“잠시 기억을 더듬어볼게.”</p>
+            </div>
+          </div>
+
+          <div class="meta-board">
+            <div class="meta-board__header">
+              <h3>게임 밖에서 얻은 정보는 사건의 단서가 아닙니다.</h3>
+              <span class="meta-board__badge">NO META</span>
+            </div>
+            <ul class="meta-examples">
+              <li>“이 작가는 항상 배신자를 넣으니까…”</li>
+              <li>“거짓말할 때 귀가 빨개지니까…”</li>
+              <li>“플레이 시간이 남았으니 반전이 있겠네.”</li>
+              <li>“지난 게임에서도 네가 범인이었잖아.”</li>
+            </ul>
+            <p class="meta-rule">
+              이런 생각이 떠오르는 건 자연스럽지만, 게임 중 입 밖으로 내면 모두의 몰입과 추리를 바꿉니다.
+              <strong>추리는 지금 이 이야기 안에서 얻은 말과 증거로만.</strong>
+            </p>
+          </div>
+
+          <div class="tip-grid">
+            <article class="tip-card tip-card--coral">
+              <div class="tip-card__icon" aria-hidden="true">⏱</div>
+              <h3>시간을 임의로 늘리거나 줄이지 않기</h3>
+              <p>
+                토론 시간은 범인과 탐정 사이의 균형까지 고려한 규칙입니다.
+                룰이 허용하지 않는다면 다수의 의견만으로 연장하거나 단축하지 마세요.
+              </p>
+            </article>
+
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">≋</div>
+              <h3>거짓말은 목적 있게</h3>
+              <p>
+                비밀과 목표를 지키기 위한 거짓말은 게임의 일부입니다. 하지만 세계관을 깨거나,
+                아무 이득 없이 혼란만 만드는 빈번한 거짓말은 추리할 토대를 무너뜨립니다.
+              </p>
+            </article>
+
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">◌</div>
+              <h3>말하고, 듣고, 고립시키지 않기</h3>
+              <p>
+                머더 미스터리는 커뮤니케이션 게임입니다. 혼자 추리만 하기보다 믿을 만한 사람과 정보를 나누고,
+                범인처럼 보인다는 이유로 누군가를 대화에서 완전히 배제하지 마세요.
+              </p>
+            </article>
+
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">♡</div>
+              <h3>캐릭터 뒤의 사람 기억하기</h3>
+              <p>
+                몰입해도 위압적인 말과 공격적인 태도는 피해주세요. 캐릭터의 감정은 충분히 느끼되,
+                플레이어를 무시하거나 불쾌하게 만들지 않는 선을 지켜야 합니다.
+              </p>
+            </article>
+
+            <article class="tip-card tip-card--wide">
+              <div class="tip-card__icon" aria-hidden="true">↗</div>
+              <h3>끝까지 포기하지 않기</h3>
+              <p>
+                목표 달성이 어려워 보여도 캐릭터를 위해 마지막까지 최선을 다해주세요.
+                자포자기한 플레이는 내 경험뿐 아니라 다른 플레이어의 결말까지 바꿀 수 있습니다.
+              </p>
+            </article>
+          </div>
+
+          <div class="golden-rule">
+            <span>The golden rule</span>
+            <blockquote>범인을 맞히는 순간보다, 모두가 함께 만든 이야기의 흐름을 즐겨주세요.</blockquote>
+          </div>
+        </section>
+
+        <section class="chapter" id="after">
+          <header class="chapter__header">
+            <p class="chapter__kicker">Chapter 03 · After</p>
+            <h2>게임이 끝난 뒤</h2>
+            <p class="chapter__summary">진상이 밝혀진 뒤에도 게임의 일부는 남아 있습니다. 결과를 받아들이고, 서로의 시점에서 이야기를 다시 만나보세요.</p>
+            <span class="chapter__stamp" aria-hidden="true">Case closed</span>
+          </header>
+
+          <div class="tip-grid">
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">∴</div>
+              <h3>남 탓하지 않기</h3>
+              <p>
+                실패가 누군가 때문처럼 느껴져도 플레이 방식이 틀렸다며 비난하지 마세요.
+                모두가 각자의 정보와 목표 안에서 베스트를 다했기에 그 팟만의 결말이 완성된 것입니다.
+              </p>
+            </article>
+
+            <article class="tip-card">
+              <div class="tip-card__icon" aria-hidden="true">0</div>
+              <h3>점수에 연연하지 않기</h3>
+              <p>
+                점수는 캐릭터가 무엇을 중요하게 여겼는지 보여주는 참고표에 가깝습니다.
+                0점이어도 잘못 플레이한 것이 아니며, 충분히 즐겼다면 인생 테마가 될 수 있습니다.
+              </p>
+            </article>
+
+            <article class="tip-card tip-card--wide tip-card--cyan">
+              <div class="tip-card__icon" aria-hidden="true">▤</div>
+              <h3>다른 설정서와 엔딩 읽어보기</h3>
+              <p>
+                게임 종료 후 공개가 허용된 범위에서 다른 캐릭터의 설정과 선택하지 않은 엔딩을 살펴보세요.
+                <strong>“그래서 그때 그렇게 행동했구나!”</strong> 하는 깨달음과, 작가가 이야기를 설계한 방식을 발견하는 재미가 있습니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter" id="checklist">
+          <header class="chapter__header">
+            <p class="chapter__kicker">Final check · 30 seconds</p>
+            <h2>사건에 들어가기 전</h2>
+            <p class="chapter__summary">오늘의 플레이를 위한 다섯 가지 약속. 모두 확인했다면 준비 완료입니다.</p>
+          </header>
+
+          <div class="checklist">
+            <div class="checklist__head">
+              <h3>플레이어 체크리스트</h3>
+              <span class="checklist__count" aria-live="polite">0 / 5 확인</span>
+            </div>
+            <div class="checklist__items">
+              <label class="check-item">
+                <input type="checkbox">
+                <span>정해진 시간 동안 처음부터 끝까지 참여할 수 있어요.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox">
+                <span>룰과 캐릭터 설정을 꼼꼼히 확인할게요.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox">
+                <span>게임 밖 정보로 메타 추리하지 않을게요.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox">
+                <span>캐릭터에 몰입하되 플레이어를 존중할게요.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox">
+                <span>점수보다 함께 만드는 이야기를 즐길게요.</span>
+              </label>
+            </div>
+            <button class="checklist__reset" type="button">체크 초기화</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="closing">
+      <div class="closing__inner">
+        <div class="closing__symbol" aria-hidden="true"><span>✦</span></div>
+        <h2>이 팟에서만 완성되는<br>단 하나의 이야기를 위해</h2>
+        <p>
+          같은 시나리오라도 같은 이야기는 두 번 만들어지지 않습니다.
+          서로의 선택과 감정, 대화를 존중하며 <strong>즐거운 사건</strong>을 완성해보세요.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    초보 플레이어를 위한 머더 미스터리 에티켓 가이드 · 원문의 취지를 바탕으로 읽기 쉽게 재구성했습니다.
+  </footer>
+
+  <script>
+    const progressBar = document.querySelector(".progress__bar");
+    const tocLinks = [...document.querySelectorAll(".toc a")];
+    const sections = tocLinks
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      progressBar.style.width = `${Math.min(progress, 100)}%`;
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+        tocLinks.forEach((link) => {
+          const isCurrent = link.getAttribute("href") === `#${visible.target.id}`;
+          if (isCurrent) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        });
+      },
+      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.2, 0.5] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    document.querySelector("#printButton").addEventListener("click", () => window.print());
+
+    const shareButton = document.querySelector("#shareButton");
+    shareButton.addEventListener("click", async () => {
+      const shareData = {
+        title: document.title,
+        text: "머더 미스터리를 더 재미있게 즐기기 위한 초보자 가이드",
+        url: window.location.href
+      };
+
+      try {
+        if (navigator.share) await navigator.share(shareData);
+        else {
+          await navigator.clipboard.writeText(window.location.href);
+          const label = shareButton.querySelector(".button-label");
+          if (label) label.textContent = "복사됨";
+          setTimeout(() => {
+            if (label) label.textContent = "공유";
+          }, 1600);
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") console.warn("공유할 수 없습니다.", error);
+      }
+    });
+
+    const checks = [...document.querySelectorAll(".check-item input")];
+    const checkCount = document.querySelector(".checklist__count");
+
+    const updateCheckCount = () => {
+      const completed = checks.filter((check) => check.checked).length;
+      checkCount.textContent = `${completed} / ${checks.length} 확인`;
+    };
+
+    checks.forEach((check) => check.addEventListener("change", updateCheckCount));
+    document.querySelector(".checklist__reset").addEventListener("click", () => {
+      checks.forEach((check) => {
+        check.checked = false;
+      });
+      updateCheckCount();
+    });
+  </script>
+</body>
+</html>
