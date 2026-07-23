@@ -666,6 +666,11 @@
         .story-image img {
           width: 100%;
           height: 100%;
+          object-fit: contain;
+        }
+
+        .story-image::before {
+          opacity: 0.72;
         }
 
         .story-copy {
@@ -709,6 +714,7 @@
       .suspects {
         --cast-width: min(100vw, calc(100svh * 1.5));
         --cast-height: calc(var(--cast-width) / 1.5);
+        --cast-left: calc((100% - var(--cast-width)) / 2);
         --suspect-step: min(58svh, 520px);
         position: relative;
         display: block;
@@ -717,6 +723,8 @@
         margin-left: calc(50% - 50vw);
         background: #020405;
         isolation: isolate;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
       }
 
       .cast-stage {
@@ -728,8 +736,9 @@
         background:
           #020405
           url("assets/00-cast-reference.png")
-          center / contain no-repeat;
+          var(--cast-left) center / var(--cast-width) var(--cast-height) no-repeat;
         isolation: isolate;
+        transition: background-position 320ms ease;
       }
 
       .suspect {
@@ -751,23 +760,23 @@
       }
 
       .suspect:nth-child(1) .suspect-portrait {
-        left: calc((100% - var(--cast-width)) / 2);
+        left: var(--cast-left);
       }
 
       .suspect:nth-child(2) .suspect-portrait {
-        left: calc((100% - var(--cast-width)) / 2 + var(--cast-width) * 0.2);
+        left: calc(var(--cast-left) + var(--cast-width) * 0.2);
       }
 
       .suspect:nth-child(3) .suspect-portrait {
-        left: calc((100% - var(--cast-width)) / 2 + var(--cast-width) * 0.4);
+        left: calc(var(--cast-left) + var(--cast-width) * 0.4);
       }
 
       .suspect:nth-child(4) .suspect-portrait {
-        left: calc((100% - var(--cast-width)) / 2 + var(--cast-width) * 0.6);
+        left: calc(var(--cast-left) + var(--cast-width) * 0.6);
       }
 
       .suspect:nth-child(5) .suspect-portrait {
-        left: calc((100% - var(--cast-width)) / 2 + var(--cast-width) * 0.8);
+        left: calc(var(--cast-left) + var(--cast-width) * 0.8);
       }
 
       .suspect.is-active .suspect-portrait {
@@ -813,6 +822,11 @@
       }
 
       @media (max-width: 760px) {
+        .suspects {
+          --cast-width: calc(100svh * 1.5);
+          --cast-height: 100svh;
+        }
+
         .suspect-content {
           left: 14px;
           bottom: 20px;
@@ -864,6 +878,7 @@
 
         .cast-stage {
           position: relative;
+          transition: none;
         }
       }
     </style>
@@ -1298,6 +1313,7 @@
         const storySection = document.querySelector(".story-section");
         const hero = document.querySelector(".hero");
         const suspects = document.querySelector(".suspects");
+        const castStage = suspects?.querySelector(".cast-stage");
         const closing = document.querySelector(".closing");
         const suspectCards = [...document.querySelectorAll(".suspect")];
 
@@ -1306,6 +1322,23 @@
 
           let ticking = false;
           let activeSuspectIndex = 0;
+
+          const updateCastPan = (index) => {
+            if (!suspects || !castStage) return;
+
+            if (!matchMedia("(max-width: 760px)").matches) {
+              suspects.style.removeProperty("--cast-left");
+              return;
+            }
+
+            const castWidth = castStage.clientHeight * 1.5;
+            const viewportWidth = castStage.clientWidth;
+            const activeCenter = castWidth * ((index + 0.5) / suspectCards.length);
+            const desiredLeft = viewportWidth / 2 - activeCenter;
+            const castLeft = Math.max(viewportWidth - castWidth, Math.min(0, desiredLeft));
+
+            suspects.style.setProperty("--cast-left", `${castLeft.toFixed(2)}px`);
+          };
 
           const activateSuspect = (index) => {
             activeSuspectIndex = index;
@@ -1316,6 +1349,7 @@
               card.classList.toggle("is-active", active);
               portrait?.setAttribute("aria-pressed", String(active));
             });
+            updateCastPan(index);
           };
 
           const scrollToSuspect = (index, behavior = "smooth") => {
@@ -1429,7 +1463,10 @@
           };
 
           addEventListener("scroll", requestStoryUpdate, { passive: true });
-          addEventListener("resize", requestStoryUpdate);
+          addEventListener("resize", () => {
+            updateCastPan(activeSuspectIndex);
+            requestStoryUpdate();
+          });
           addEventListener("keydown", (event) => {
             const direction = ["ArrowDown", "ArrowRight"].includes(event.key)
               ? 1
