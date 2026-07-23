@@ -712,8 +712,9 @@
 
       /* Interactive full-cast portrait */
       .suspects {
-        --cast-width: min(100vw, calc(100svh * 1.5));
-        --cast-height: calc(var(--cast-width) / 1.5);
+        --cast-ratio: 1.850325;
+        --cast-width: min(100vw, calc(100svh * var(--cast-ratio)));
+        --cast-height: calc(var(--cast-width) / var(--cast-ratio));
         --cast-left: calc((100% - var(--cast-width)) / 2);
         --suspect-step: min(58svh, 520px);
         position: relative;
@@ -823,7 +824,7 @@
 
       @media (max-width: 760px) {
         .suspects {
-          --cast-width: calc(100svh * 1.5);
+          --cast-width: calc(100svh * var(--cast-ratio));
           --cast-height: 100svh;
         }
 
@@ -1335,7 +1336,8 @@
               return;
             }
 
-            const castWidth = castStage.clientHeight * 1.5;
+            const castRatio = Number(getComputedStyle(suspects).getPropertyValue("--cast-ratio")) || 1.5;
+            const castWidth = castStage.clientHeight * castRatio;
             const viewportWidth = castStage.clientWidth;
             const activeCenter = castWidth * ((index + 0.5) / suspectCards.length);
             const desiredLeft = viewportWidth / 2 - activeCenter;
